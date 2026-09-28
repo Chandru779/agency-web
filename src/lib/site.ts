@@ -1,3 +1,20 @@
+const DEFAULT_SITE_URL = "https://miqode.com";
+
+function resolveSiteUrl(value: string | undefined) {
+  const candidate = value?.trim();
+  if (!candidate) return DEFAULT_SITE_URL;
+
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "http:" && url.protocol !== "https:") {
+      return DEFAULT_SITE_URL;
+    }
+    return url.origin;
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+}
+
 export const site = {
   name: "miqode",
   legalName: "miqode",
@@ -6,7 +23,7 @@ export const site = {
     "Software engineering partner for startups and growing businesses.",
   description:
     "From SaaS products and AI-powered applications to custom business platforms, miqode turns complex problems into scalable software.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://miqode.com",
+  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   email: "miqode@gmail.com",
   phone: "+91 63618 52500",
   phoneHref: "tel:+916361852500",

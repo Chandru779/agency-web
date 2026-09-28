@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Logo } from "@/components/brand/logo";
 import { Container } from "@/components/layout/container";
 import { eyebrowClass } from "@/components/ui/eyebrow";
-import { addressLines, footerNav, site } from "@/lib/site";
+import { footerNav, site } from "@/lib/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -57,39 +57,32 @@ export function SiteFooter() {
                 ))}
               </ul>
             </div>
-            <div>
+            <div className="col-span-2 sm:col-span-1">
               <p className={`${eyebrowClass} text-background/55`}>Contact</p>
-              <ul className="mt-5 space-y-3">
-                <li>
-                  <a
-                    href={`mailto:${site.email}`}
-                    className="text-sm text-background/80 transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-background/40"
-                  >
-                    {site.email}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={site.phoneHref}
-                    className="text-sm text-background/80 transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-background/40"
-                  >
-                    {site.phone}
-                  </a>
-                </li>
-                {addressLines().map((line) => (
-                  <li key={line} className="text-sm leading-6 text-background/70">
-                    {line}
+              <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-1">
+                <ul className="space-y-3">
+                  <li>
+                    <a
+                      href={`mailto:${site.email}`}
+                      className="text-sm text-background/80 transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-background/40"
+                    >
+                      {site.email}
+                    </a>
                   </li>
-                ))}
-                <li>
-                  <Link
-                    href="/start"
-                    className="text-sm text-background/80 transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-background/40"
-                  >
-                    Start a project
-                  </Link>
-                </li>
-              </ul>
+                  <li>
+                    <a
+                      href={site.phoneHref}
+                      className="text-sm text-background/80 transition-colors hover:text-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-background/40"
+                    >
+                      {site.phone}
+                    </a>
+                  </li>
+                </ul>
+                <p className="text-sm leading-relaxed text-background/70">
+                  {site.address.street}, {site.address.city}{" "}
+                  {site.address.postalCode}
+                </p>
+              </div>
             </div>
           </div>
         </div>
