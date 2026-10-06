@@ -127,7 +127,7 @@ export default function AboutPage() {
             <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
               The people behind miqode.
             </h2>
-            <div className="mt-6 divide-y divide-border border-y border-border">
+            <div className="mt-6 divide-y divide-border border-t border-border">
               {people.map((person) => (
                 <article
                   key={person.id}

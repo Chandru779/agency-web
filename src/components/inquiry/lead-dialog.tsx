@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
 
 const storageKey = "miqode-lead-dismissed";
-const delayMs = 4000;
+const delayMs = 8000;
 
 function rememberDismissal() {
   try {
@@ -65,8 +65,8 @@ export function LeadDialog() {
       }}
     >
       <Dialog.Portal>
-        <Dialog.Backdrop className="fixed inset-0 z-[70] bg-ink/45 transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs" />
-        <Dialog.Popup className="fixed top-1/2 left-1/2 z-[70] flex max-h-[min(100%-2rem,40rem)] w-[min(100%-1.5rem,34rem)] -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto border border-border bg-background p-5 text-foreground shadow-lg transition duration-200 outline-none data-ending-style:scale-[0.98] data-ending-style:opacity-0 data-starting-style:scale-[0.98] data-starting-style:opacity-0 sm:p-6">
+        <Dialog.Backdrop className="lead-dialog-backdrop fixed inset-0 z-[70] bg-ink/45 supports-backdrop-filter:backdrop-blur-xs" />
+        <Dialog.Popup className="lead-dialog-popup fixed top-1/2 left-1/2 z-[70] flex max-h-[min(100%-2rem,40rem)] w-[min(100%-1.5rem,34rem)] flex-col overflow-y-auto border border-border bg-background p-5 text-foreground shadow-lg outline-none sm:p-6">
           <Dialog.Close
             render={
               <Button

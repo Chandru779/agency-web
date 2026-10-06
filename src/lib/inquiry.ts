@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-import { site } from "@/lib/site";
-
 export const projectIntents = [
   {
     id: "product",
@@ -46,21 +44,29 @@ export function inquirySchema(variant: "page" | "dialog") {
   return z.object({
     name:
       variant === "page"
-        ? z.string().trim().min(2, "Add your name.")
-        : z.string().trim(),
-    email: z.email("Use a valid email address."),
+        ? z
+            .string()
+            .trim()
+            .min(2, "Add your name.")
+            .max(80, "Use a shorter name.")
+        : z.string().trim().max(80, "Use a shorter name."),
+    email: z
+      .string()
+      .trim()
+      .max(254, "Use a shorter email address.")
+      .pipe(z.email("Use a valid email address.")),
     phone: z
       .string()
       .trim()
       .min(8, "Add a phone number we can reach.")
       .max(24, "That phone number looks too long."),
-    company: z.string().trim().max(80),
+    company: z.string().trim().max(80, "Use a shorter company name."),
     intent: z.string().min(1, "Choose what you need."),
     message: z
       .string()
       .trim()
       .min(8, "Add a short note about the project.")
-      .max(2000),
+      .max(2000, "Keep the note under 2,000 characters."),
   });
 }
 
@@ -71,21 +77,4 @@ export function intentById(id: string) {
 export function isStockBrief(message: string) {
   const trimmed = message.trim();
   return projectIntents.some((item) => item.brief === trimmed);
-}
-
-export function inquiryMailto(values: InquiryValues) {
-  const intent = intentById(values.intent);
-  const lines = [
-    values.name.trim() ? `Name: ${values.name.trim()}` : null,
-    `Email: ${values.email.trim()}`,
-    `Phone: ${values.phone.trim()}`,
-    values.company.trim() ? `Company: ${values.company.trim()}` : null,
-    `Project: ${intent.label}`,
-    "",
-    values.message.trim(),
-  ].filter((line): line is string => line !== null);
-
-  const subject = encodeURIComponent(`Project request — ${intent.label}`);
-  const body = encodeURIComponent(lines.join("\n"));
-  return `mailto:${site.email}?subject=${subject}&body=${body}`;
 }

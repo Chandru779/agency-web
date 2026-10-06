@@ -24,7 +24,7 @@ export const site = {
   description:
     "From SaaS products and AI-powered applications to custom business platforms, miqode turns complex problems into scalable software.",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
-  email: "miqode@gmail.com",
+  email: "hello.miqode@gmail.com",
   phone: "+91 63618 52500",
   phoneHref: "tel:+916361852500",
   hours: "Monday to Monday, 10:00–18:30 IST",

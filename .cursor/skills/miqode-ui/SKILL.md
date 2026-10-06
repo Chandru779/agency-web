@@ -23,12 +23,12 @@ Read the page and the shared pieces it uses: `Section`, `PageHero`, `Container`,
 
 ## Content
 
-- Facts live in `src/lib/site.ts`: email `miqode@gmail.com`, phone `+91 63618 52500`, hours, response time, Nagarbhavi studio address, founder years, co-founder years, head of engineering years, and team size. Do not invent a name, a client logo, or a quote.
+- Facts live in `src/lib/site.ts`: email `hello.miqode@gmail.com`, phone `+91 63618 52500`, hours, response time, Nagarbhavi studio address, founder years, co-founder years, head of engineering years, and team size. Do not invent a name, a client logo, or a quote.
 - The founder is Chandrashekar. Co-founder and Head of Engineering are separate roles; describe them by role until a name is provided. Head of Engineering is ex-Flipkart. The team is 5–10 people.
 - Practice-project asides ("what we will not do") should be rewritten as client-facing copy. Keep the honesty: no fictional case studies.
 
 ## Requests
 
 - "Start a project" links to `/start`, not `mailto:`.
-- The lead dialog in `LeadDialog` opens once, about four seconds after the first view, and not on `/start`. Dismissal is stored in `sessionStorage` under `miqode-lead-dismissed`. Keep it a short panel: a 2-column intent grid with each option’s label and hint, then email, phone, and the note. Do not show the studio phone number in the dialog.
-- The request note is prefilled from `projectIntents` in `src/lib/inquiry.ts`. Required contact fields are email and phone. Submitting opens a `mailto:` to `site.email` with the brief. Do not pretend a request was stored if no mail service exists.
+- The lead dialog in `LeadDialog` opens once, about eight seconds after the first view, and not on `/start`. It fades and rises in; it does not appear instantly. Dismissal is stored in `sessionStorage` under `miqode-lead-dismissed`. Keep it a short panel: a 2-column intent grid with each option’s label and hint, then email, phone, and the note. Do not show the studio phone number in the dialog.
+- The request note is prefilled from `projectIntents` in `src/lib/inquiry.ts`. Required contact fields are email and phone. Name is required on `/start` and omitted from the lead dialog. Submitting posts to `POST /api/contact`, which sends the enquiry through Resend. Do not fall back to `mailto:` or show a success state when Resend is not configured.

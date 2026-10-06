@@ -107,6 +107,16 @@
   ::selection {
     background: color-mix(in oklch, var(--brand) 22%, transparent);
   }
+
+  a[href],
+  button:not(:disabled),
+  summary,
+  select:not(:disabled),
+  label:has(:is(input[type="radio"], input[type="checkbox"])),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="link"] {
+    cursor: pointer;
+  }
 }
 
 .hero-atmosphere {
@@ -243,6 +253,30 @@
   }
 }
 
+.lead-dialog-backdrop {
+  transition: opacity 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lead-dialog-backdrop[data-starting-style],
+.lead-dialog-backdrop[data-ending-style] {
+  opacity: 0;
+}
+
+.lead-dialog-popup {
+  translate: -50% -50%;
+  transition:
+    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 480ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lead-dialog-popup[data-starting-style],
+.lead-dialog-popup[data-ending-style] {
+  opacity: 0;
+  translate: -50% calc(-50% + 1.25rem);
+  scale: 0.96;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -256,5 +290,10 @@
   .hero-visual-enter,
   .positioning-flow {
     animation: none;
+  }
+
+  .lead-dialog-backdrop,
+  .lead-dialog-popup {
+    transition: none;
   }
 }
