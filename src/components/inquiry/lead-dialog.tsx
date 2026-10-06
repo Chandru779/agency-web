@@ -66,7 +66,7 @@ export function LeadDialog() {
     >
       <Dialog.Portal>
         <Dialog.Backdrop className="lead-dialog-backdrop fixed inset-0 z-[70] bg-ink/45 supports-backdrop-filter:backdrop-blur-xs" />
-        <Dialog.Popup className="lead-dialog-popup fixed top-1/2 left-1/2 z-[70] flex max-h-[min(100%-2rem,40rem)] w-[min(100%-1.5rem,34rem)] flex-col overflow-y-auto border border-border bg-background p-5 text-foreground shadow-lg outline-none sm:p-6">
+        <Dialog.Popup className="lead-dialog-popup fixed top-1/2 left-1/2 z-[70] flex max-h-[min(100%-2rem,40rem)] w-[min(100%-1.5rem,34rem)] flex-col overflow-y-auto rounded-lg border border-border bg-background p-5 text-foreground outline-none sm:p-6">
           <Dialog.Close
             render={
               <Button
