@@ -1,11 +1,11 @@
 export const canonicalHost = "miqode.in";
 
-/** Other hosts that should send visitors to https://miqode.in. */
-export const alternateHosts = [
-  "www.miqode.in",
-  "miqode.com",
-  "www.miqode.com",
-] as const;
+/**
+ * Hosts that should send visitors to https://miqode.in.
+ * www.miqode.in is omitted: Vercel already redirects the apex domain to www,
+ * and redirecting www back here loops forever so the site never loads.
+ */
+export const alternateHosts = ["miqode.com", "www.miqode.com"] as const;
 
 const DEFAULT_SITE_URL = `https://${canonicalHost}`;
 

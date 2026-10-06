@@ -37,7 +37,7 @@ Point `miqode.in` at this deployment, then in [Google Search Console](https://se
 2. Copy the HTML-tag verification value into `GOOGLE_SITE_VERIFICATION` and redeploy.
 3. Submit `https://miqode.in/sitemap.xml`.
 
-A new domain can take days or weeks to show up for the name “miqode”. Broad phrases such as “best agency” are not something a title tag can win on its own. `www` and `miqode.com` redirect to `https://miqode.in` when those hosts reach this app.
+A new domain can take days or weeks to show up for the name “miqode”. Broad phrases such as “best agency” are not something a title tag can win on its own. `miqode.com` redirects to `https://miqode.in` when that host reaches this app. Do not also redirect `www.miqode.in` to the apex while Vercel redirects the apex to `www`; that pair loops and the site will not load.
 
 ## Contact email
 
