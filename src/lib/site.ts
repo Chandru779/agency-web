@@ -1,4 +1,13 @@
-const DEFAULT_SITE_URL = "https://miqode.com";
+export const canonicalHost = "miqode.in";
+
+/** Other hosts that should send visitors to https://miqode.in. */
+export const alternateHosts = [
+  "www.miqode.in",
+  "miqode.com",
+  "www.miqode.com",
+] as const;
+
+const DEFAULT_SITE_URL = `https://${canonicalHost}`;
 
 function resolveSiteUrl(value: string | undefined) {
   const candidate = value?.trim();
@@ -22,14 +31,14 @@ export const site = {
   shortDescription:
     "Software engineering partner for startups and growing businesses.",
   description:
-    "From SaaS products and AI-powered applications to custom business platforms, miqode turns complex problems into scalable software.",
+    "miqode is a software engineering studio in Bengaluru. We build SaaS products, AI-powered applications, and custom business platforms for startups and growing businesses.",
   url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
   email: "hello.miqode@gmail.com",
   phone: "+91 63618 52500",
   phoneHref: "tel:+916361852500",
   hours: "Monday to Monday, 10:00–18:30 IST",
   responseTime: "Within one business day",
-  locale: "en_US",
+  locale: "en_IN",
   address: {
     studio: "miqode Studio",
     street:

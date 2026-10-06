@@ -19,7 +19,25 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run lint` — ESLint
 - `npm run typecheck` — TypeScript
 
-Set `NEXT_PUBLIC_SITE_URL` in production (see `.env.example`) for canonical URLs, sitemap, and Open Graph.
+Set `NEXT_PUBLIC_SITE_URL` in production (see `.env.example`) for canonical URLs, sitemap, and Open Graph. The public site is `https://miqode.in`.
+
+## Search
+
+Search files live next to the routes they describe:
+
+- `src/lib/seo.ts` — titles, the list of public pages, and structured data
+- `src/app/sitemap.ts` — `/sitemap.xml`
+- `src/app/robots.ts` — `/robots.txt`
+- `src/app/manifest.ts` — the site name for browsers
+- `src/components/seo/json-ld.tsx` — the homepage schema tag
+
+Point `miqode.in` at this deployment, then in [Google Search Console](https://search.google.com/search-console):
+
+1. Add the property `https://miqode.in`.
+2. Copy the HTML-tag verification value into `GOOGLE_SITE_VERIFICATION` and redeploy.
+3. Submit `https://miqode.in/sitemap.xml`.
+
+A new domain can take days or weeks to show up for the name “miqode”. Broad phrases such as “best agency” are not something a title tag can win on its own. `www` and `miqode.com` redirect to `https://miqode.in` when those hosts reach this app.
 
 ## Contact email
 

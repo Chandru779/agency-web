@@ -1,21 +1,11 @@
 import type { MetadataRoute } from "next";
 
-import { site } from "@/lib/site";
+import { absoluteUrl, indexablePaths } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/services",
-    "/solutions",
-    "/process",
-    "/about",
-    "/start",
-  ];
-
-  return routes.map((route) => ({
-    url: `${site.url}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1 : 0.7,
+  return indexablePaths.map((route) => ({
+    url: absoluteUrl(route.path),
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
 }
