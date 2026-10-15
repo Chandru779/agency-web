@@ -34,7 +34,7 @@ Search files live next to the routes they describe:
 In [Google Search Console](https://search.google.com/search-console):
 
 1. Add the property `https://miqode.com`.
-2. Copy the HTML-tag verification value into `GOOGLE_SITE_VERIFICATION` and redeploy.
+2. Confirm the homepage includes the `google-site-verification` tag from `src/lib/seo.ts`, then click Verify.
 3. Submit `https://miqode.com/sitemap.xml`.
 
 Set `miqode.com` as the production domain in Vercel. Redirect `www.miqode.com`, `miqode.in`, and `www.miqode.in` to `https://miqode.com` in the Vercel domain settings. This app does not redirect between those hosts, so `*.vercel.app` previews keep working.

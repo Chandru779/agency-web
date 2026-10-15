@@ -2,7 +2,7 @@ import type { Metadata, MetadataRoute } from "next";
 
 import { site } from "@/lib/site";
 
-const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
+const googleVerification = "FwBV-RYHTG11eaF4wcYuY57b6EKKNgn0o_ImqJ94UKU";
 
 export const indexablePaths = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
