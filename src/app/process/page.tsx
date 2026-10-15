@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
-
 import { PageHero } from "@/components/layout/page-hero";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { CtaSection } from "@/components/sections/cta";
 import { processSteps } from "@/content/process";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/process",
   title: "Process",
   description:
     "How miqode delivers software: discover, define, architect, build, launch, and grow — with transparent scope and communication.",
-  alternates: { canonical: "/process" },
-};
+});
 
 export default function ProcessPage() {
   return (

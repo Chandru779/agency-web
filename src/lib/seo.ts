@@ -22,6 +22,50 @@ export function absoluteUrl(path = "/") {
   return `${site.url}${path}`;
 }
 
+type IndexablePath = (typeof indexablePaths)[number]["path"];
+
+const socialImageAlt = `${site.name} — ${site.tagline}`;
+
+export function pageMetadata({
+  path,
+  title,
+  description,
+}: {
+  path: IndexablePath;
+  title: string;
+  description: string;
+}): Metadata {
+  const resolvedTitle =
+    path === "/" ? { absolute: title } : { absolute: `${title} — ${site.name}` };
+  const image = {
+    url: "/opengraph-image",
+    width: 1200,
+    height: 630,
+    alt: socialImageAlt,
+  };
+
+  return {
+    title: resolvedTitle,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      locale: site.locale,
+      siteName: site.name,
+      title: resolvedTitle,
+      description,
+      url: path,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: resolvedTitle,
+      description,
+      images: [image],
+    },
+  };
+}
+
 export const rootMetadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -32,21 +76,13 @@ export const rootMetadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: site.locale,
-    url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} — ${site.tagline}`,
-    description: site.description,
   },
   robots: {
     index: true,

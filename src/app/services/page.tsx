@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PageHero } from "@/components/layout/page-hero";
@@ -6,13 +5,14 @@ import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { CtaSection } from "@/components/sections/cta";
 import { services } from "@/content/services";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/services",
   title: "Services",
   description:
     "Product development, business software, AI and automation, and software modernization — engineering services for startups and growing businesses.",
-  alternates: { canonical: "/services" },
-};
+});
 
 export default function ServicesPage() {
   return (

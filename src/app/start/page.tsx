@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { InquiryForm } from "@/components/inquiry/inquiry-form";
@@ -8,14 +7,15 @@ import { PageHero } from "@/components/layout/page-hero";
 import { Section } from "@/components/layout/section";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { engagementSteps } from "@/content/leadership";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/start",
   title: "Start a project",
   description:
     "Tell miqode what you are building. Share your email and phone number and we reply within one business day.",
-  alternates: { canonical: "/start" },
-};
+});
 
 export default function StartPage() {
   return (

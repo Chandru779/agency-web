@@ -1,29 +1,3 @@
-export const canonicalHost = "miqode.in";
-
-/**
- * Hosts that should send visitors to https://miqode.in.
- * www.miqode.in is omitted: Vercel already redirects the apex domain to www,
- * and redirecting www back here loops forever so the site never loads.
- */
-export const alternateHosts = ["miqode.com", "www.miqode.com"] as const;
-
-const DEFAULT_SITE_URL = `https://${canonicalHost}`;
-
-function resolveSiteUrl(value: string | undefined) {
-  const candidate = value?.trim();
-  if (!candidate) return DEFAULT_SITE_URL;
-
-  try {
-    const url = new URL(candidate);
-    if (url.protocol !== "http:" && url.protocol !== "https:") {
-      return DEFAULT_SITE_URL;
-    }
-    return url.origin;
-  } catch {
-    return DEFAULT_SITE_URL;
-  }
-}
-
 export const site = {
   name: "miqode",
   legalName: "miqode",
@@ -32,7 +6,7 @@ export const site = {
     "Software engineering partner for startups and growing businesses.",
   description:
     "miqode is a software engineering studio in Bengaluru. We build SaaS products, AI-powered applications, and custom business platforms for startups and growing businesses.",
-  url: resolveSiteUrl(process.env.NEXT_PUBLIC_SITE_URL),
+  url: "https://miqode.com",
   email: "hello.miqode@gmail.com",
   phone: "+91 63618 52500",
   phoneHref: "tel:+916361852500",

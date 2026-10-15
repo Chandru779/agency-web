@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 
 import { StudioFacts } from "@/components/inquiry/studio-facts";
@@ -15,14 +14,15 @@ import {
   people,
 } from "@/content/about";
 import { engagementSteps } from "@/content/leadership";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/about",
   title: "About",
   description:
     "miqode was founded in 2025 to build software for what comes next — experienced engineers, modern AI, and systems designed to evolve.",
-  alternates: { canonical: "/about" },
-};
+});
 
 export default function AboutPage() {
   const { founder } = site;

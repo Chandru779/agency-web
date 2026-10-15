@@ -19,7 +19,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run lint` — ESLint
 - `npm run typecheck` — TypeScript
 
-Set `NEXT_PUBLIC_SITE_URL` in production (see `.env.example`) for canonical URLs, sitemap, and Open Graph. The public site is `https://miqode.in`.
+The public site is `https://miqode.com`. Canonical URLs, the sitemap, Open Graph, and structured data use that origin from `src/lib/site.ts`.
 
 ## Search
 
@@ -31,13 +31,15 @@ Search files live next to the routes they describe:
 - `src/app/manifest.ts` — the site name for browsers
 - `src/components/seo/json-ld.tsx` — the homepage schema tag
 
-Point `miqode.in` at this deployment, then in [Google Search Console](https://search.google.com/search-console):
+In [Google Search Console](https://search.google.com/search-console):
 
-1. Add the property `https://miqode.in`.
+1. Add the property `https://miqode.com`.
 2. Copy the HTML-tag verification value into `GOOGLE_SITE_VERIFICATION` and redeploy.
-3. Submit `https://miqode.in/sitemap.xml`.
+3. Submit `https://miqode.com/sitemap.xml`.
 
-A new domain can take days or weeks to show up for the name “miqode”. Broad phrases such as “best agency” are not something a title tag can win on its own. `miqode.com` redirects to `https://miqode.in` when that host reaches this app. Do not also redirect `www.miqode.in` to the apex while Vercel redirects the apex to `www`; that pair loops and the site will not load.
+Set `miqode.com` as the production domain in Vercel. Redirect `www.miqode.com`, `miqode.in`, and `www.miqode.in` to `https://miqode.com` in the Vercel domain settings. This app does not redirect between those hosts, so `*.vercel.app` previews keep working.
+
+A new domain can take days or weeks to show up for the name “miqode”. Broad phrases such as “best agency” are not something a title tag can win on its own.
 
 ## Contact email
 

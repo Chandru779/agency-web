@@ -8,15 +8,14 @@ import { ProcessSection } from "@/components/sections/process";
 import { ServicesSection } from "@/components/sections/services";
 import { WhyUsSection } from "@/components/sections/why-us";
 import { OrganizationJsonLd } from "@/components/seo/json-ld";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: `${site.name} — ${site.tagline}`,
-  },
+export const metadata: Metadata = pageMetadata({
+  path: "/",
+  title: `${site.name} — ${site.tagline}`,
   description: site.description,
-  alternates: { canonical: "/" },
-};
+});
 
 export default function HomePage() {
   return (

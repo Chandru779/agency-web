@@ -1,18 +1,17 @@
-import type { Metadata } from "next";
-
 import { PageHero } from "@/components/layout/page-hero";
 import { eyebrowClass } from "@/components/ui/eyebrow";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { CtaSection } from "@/components/sections/cta";
 import { solutions } from "@/content/solutions";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
+  path: "/solutions",
   title: "Solutions",
   description:
     "Software engineering for startups, growing businesses, established companies, and agency partners.",
-  alternates: { canonical: "/solutions" },
-};
+});
 
 export default function SolutionsPage() {
   return (
